@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpdeplo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      name: httpd
+      labels:
+        app: httpd
+    spec:
+      containers:
+      - name: nginxd
+        image: httpd
+        ports:
+        - containerPort: 80
